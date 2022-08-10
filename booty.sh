@@ -99,7 +99,7 @@ echo ""
     influx
     CREATE USER admin WITH PASSWORD 'adminpassword' WITH ALL PRIVILEGES
     exit
-    echo "faire CTRL+W et chercher HTTP, faire les reglage suivants: "
+    echo "faire CTRL+W et chercher HTTP, faire les réglages suivants: "
         sleep 1
         echo ""
             echo "auth-enabled = true"
