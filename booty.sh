@@ -1,17 +1,24 @@
 #!/bin/bash
 
-echo "Bonjour Nouvel Utilisateur,"
-echo "a qui ai-je l'honneur de parler?"
-    read varname
-    echo "Bienvenue sur le systeme $varname"
-    echo "Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
-        read pi
-        if [[ $pi == "y" ]]; then
-            echo "L'utilisateur pi seras ajouté lors de l'installation"
-        else 
-            echo "Vous serez le seul utilisateur ajouter lors de l'installation"
-        fi
-
+    echo "Bonjour Nouvel Utilisateur,"
+    echo "a qui ai-je l'honneur de parler?"
+        read varname
+        echo "Bienvenue sur le systeme $varname"
+        echo "est-ce le meme Utilisateur que $user? (y/n)"
+        read answers2
+         if [[ $answers2 == "y" ]]; then 
+            $varname=$user
+        fiarname
+        echo "Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
+            read pi
+            if [[ $pi == "y" ]]; then
+                echo "L'utilisateur pi seras ajouté lors de l'installation"
+            else 
+                if [[ $answers2 == "y" ]]; then
+                    echo "tres bien, $user"
+                else
+                    echo "Vous serez le seul utilisateur ajouter lors de l'installation"
+            fi
     echo "Je vais prendre en charge la preparation du systeme pour vous."
 echo ""
 echo ""
@@ -70,13 +77,13 @@ echo ""
             echo "password_file /etc/mosquitto/pwfile"
             echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 
                 fi 
         sudo nano /etc/mosquitto/mosquitto.conf
@@ -101,13 +108,13 @@ echo ""
             echo "ping-auth-enabled = true"
             echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
                 read answer
-                if [[ $answer == "n" ]]: then
+                if [[ $answer == "n" ]]; then
                     sleep 5 
                 fi 
     sudo nano /etc/influxdb/influxdb.conf
@@ -135,64 +142,58 @@ echo "                 -------System mis a jour------"
 echo "###################################################################"
 echo ""
 sleep 1
-echo " programmes installés:
+    echo " programmes installés:
         - Neofetch
         - HTOP
         - Docker
         - Mosquitto-Broker
         - NodeRed
-        - Grafana
-        -"
-     
+        - Grafana"
 echo ""
 sleep 2
-echo "##########################################################################"
-echo "                   ----- Creation des Utilisateurs -----"
-echo "##########################################################################"
+echo "############################################################################"
+echo "                   ----- Création des Utilisateurs -----"
+echo "############################################################################"
 sleep 2 
-
-if [[ $pi == "y" ]]; then
+    if [[ $pi == "y" ]]; then
+            usermod -u 1001 $user
+            groupmod -g 1001 $user
+            find / -group 1000 -printO | xargs -O chgrp -h $user
+            find / -user 1000 printO | xargs -O chown -h $user
+            usermod -aG 1001 $user
         useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
         addgroup --force-badname Many-Faces-God
         usermod -aG Many-Faces-God pi 
-    echo "Utilisateur pi créé"
-    echo "Utilisateur pi a été ajouté au groupes d'administration"
-else 
+            echo "Utilisateur pi créé"
+            echo "Utilisateur pi a été ajouté au groupes d'administration"
+    else 
         addgroup --force-badname Many-Faces-God
-fi
-
-adduser --force-badname $varname
-usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-
- echo "Utilisateur $varname créé"
- echo "Utilisateur $varname a été ajouté au groupes d'administration"
-
-
-echo "###################################################################"
-
-gnome-terminal htop &
-neofetch
-sleep 2
- echo "$varname, le systeme est pret à etre utilisé"
- echo "Enjoy =) "
-
- sudo su - $varname
-
-
-
-
-
-
-
-
-
-
+    fi
+    if [[ $user == $varname]]; then
+        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
+        echo "Utilisateur $varname a été ajouté au groupes d'administration"
+    else
+    adduser --force-badname $varname
+    usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
+        echo "Utilisateur $varname créé"
+        echo "Utilisateur $varname a été ajouté au groupes d'administration"
+    fi
+echo ""
+echo "##########################################################################"
+echo ""
+    gnome-terminal htop &
+    neofetch
+    sleep 2
+    echo "$varname, le systeme est pret à etre utilisé"
+    echo "Enjoy =) "
+    sudo su - $varname
 echo "##########################################################################"
 echo "                   ----- Dernieres Modifications -----"
 echo "##########################################################################"
 sleep 2 
      echo "supression de Booty.sh des fichier executables"
-     echo "booty shake" sleep 1 echo "shake" sleep 1 echo "shaaaake"
+     echo "booty shake" 
+     sleep 1 echo "shake" 
+     sleep 1 echo "shaaaake"
      chmod -x /booty.sh
      mv  booty.sh .booty_shaked.sh  
-    
