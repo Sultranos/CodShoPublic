@@ -8,7 +8,7 @@
         read answers2
          if [[ $answers2 == "y" ]]; then 
             $varname=$user
-        fiarname
+        fi
         echo "Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
             read pi
             if [[ $pi == "y" ]]; then
@@ -47,7 +47,7 @@ sleep 2
 echo ""
 sleep 2
 echo "###################################################################"
-echo "                 -------Mise a jour Nala------"
+echo "                 ------- Mise a jour Nala ------"
 echo "###################################################################"
 echo ""
 sleep 2
@@ -63,6 +63,11 @@ echo ""
     sudo nala install htop -y 
     sudo nala install neofetch -y
     sudo nala install docker -y
+echo ""
+echo "###################################################################"
+echo "          ------- Preparation pour Home Automation ------"
+echo "###################################################################"
+echo ""
     sudo nala install mosquitto mosquitto-clients -y
        echo "Creer MDP pour Mosquitto"
        read varpasswd
@@ -129,12 +134,14 @@ echo ""
     sudo systemctl start nodered.service
     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
     echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-    sudo nala update
+    sudo nala update 
     sudo nala install grafana -y
     sudo systemctl enable grafana-server
-    sudo systemctl start grafana-server
-    mosquitto_sub -u mqtt_username -P mqtt_password -v -t "#" 
-    while sleep 5 then exit
+    sudo systemctl start grafana-server    
+    while [[ mosquitto_sub -u mqtt_username -P mqtt_password -v -t "#" ]]; do 
+        sleep5 
+        exit
+    done
 echo ""
 sleep 2
 echo "###################################################################"
@@ -142,15 +149,17 @@ echo "                 -------System mis a jour------"
 echo "###################################################################"
 echo ""
 sleep 1
-    echo " programmes installés:
+    echo " programmes généraux installés:
         - Neofetch
         - HTOP
-        - Docker
+        - Docker"
+echo ""
+    echo "programmes d'automation installés:    
         - Mosquitto-Broker
         - NodeRed
         - Grafana"
 echo ""
-sleep 2
+sleep 5
 echo "############################################################################"
 echo "                   ----- Création des Utilisateurs -----"
 echo "############################################################################"
