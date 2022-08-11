@@ -6,15 +6,14 @@
         echo "Bienvenue sur le systeme $varname"
         echo "est-ce le meme Utilisateur que $user? (y/n)"
         read answers2
-         if [[ $answers2 == "y" ]]; then 
+         if [[ $answer == "y" ]]; then 
             $varname=$user
         fi
         echo "Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
             read pi
             if [[ $pi == "y" ]]; then
                 echo "L'utilisateur pi seras ajouté lors de l'installation"
-            else 
-                if [[ $answers2 == "y" ]]; then
+            elif [[ $answer == "y" ]]; then
                     echo "tres bien, $user"
                 else
                     echo "Vous serez le seul utilisateur ajouter lors de l'installation"
@@ -81,15 +80,17 @@ echo ""
             echo "allow_anonymous false"
             echo "password_file /etc/mosquitto/pwfile"
             echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
+                read answer2
+                if [[ $answer2 == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
-                    sleep 5 echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
-                    sleep 5 
+                    read answer3
+                    if [[ $answer3 == "n" ]]; then
+                        sleep 5 echo "contiue ? (Y/n)"
+                        read answer4
+                        if [[ $answer4 == "n" ]]; then
+                            sleep 5
+                        fi
+                    fi 
                 fi 
         sudo nano /etc/mosquitto/mosquitto.conf
         sudo /etc/init.d/mosquitto restart
@@ -112,19 +113,19 @@ echo ""
             echo "pprof-auth-enabled = true"
             echo "ping-auth-enabled = true"
             echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
+                read answer5
+                if [[ $answer5 == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
+                    read answer6
+                if [[ $answer6 == "n" ]]; then
                     sleep 5 echo "contiue ? (Y/n)"
-                read answer
-                if [[ $answer == "n" ]]; then
+                    read answer7
+                if [[ $answer7 == "n" ]]; then
                     sleep 5 
                 fi 
     sudo nano /etc/influxdb/influxdb.conf
     sudo systemctl restart influxdb
-    influx -username $varname -password <$varpasswd>
+    influx -u $varname -p <$varpasswd>
     CREATE DATABASE sensors
     exit
     sudo nala install build-essential git
@@ -138,7 +139,7 @@ echo ""
     sudo nala install grafana -y
     sudo systemctl enable grafana-server
     sudo systemctl start grafana-server    
-    while [[ mosquitto_sub -u mqtt_username -P mqtt_password -v -t "#" ]]; do 
+    while [ mosquitto_sub -u mqtt_username -P mqtt_password -v -t "#" ]; do 
         sleep5 
         exit
     done
@@ -178,7 +179,7 @@ sleep 2
     else 
         addgroup --force-badname Many-Faces-God
     fi
-    if [[ $user == $varname]]; then
+    if [[ $user == $varname ]]; then
         usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
         echo "Utilisateur $varname a été ajouté au groupes d'administration"
     else
