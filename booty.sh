@@ -11,11 +11,12 @@ echo "Initialisation *********-"
 echo 0.5
 echo "Initialisation Complete"
  echo ""
-    echo "Bonjour Nouvel Utilisateur,"
+    echo "Bonjour Humanoïde,"
+    sleep 0.5
     echo "A qui ai-je l'honneur de parler?"
         read varname
-        echo "Bienvenue sur le systeme $varname"
-        echo "Est-ce le meme Utilisateur que $USER? (y/n)"
+        echo "Bienvenue sur le systeme $HOSTNAME $varname"
+        echo "Etes-vous le même Utilisateur que $USER? (y/n)"
         read answers2
          if [[ $answer == "y" ]]; then 
             $varname=$USER
@@ -30,13 +31,44 @@ echo "Initialisation Complete"
                     echo "Vous serez le seul utilisateur ajouter lors de l'installation"
             fi
     echo "Je vais prendre en charge la preparation du systeme pour vous."
+echo ""    
+echo "############################################################################"
+echo "                   ----- Création des Utilisateurs -----"
+echo "############################################################################"
+sleep 2 
+    if [[ $pi == "y" ]]; then
+            usermod -u 1001 $USER
+            groupmod -g 1001 $USER
+            find / -group 1000 -printO | xargs -O chgrp -h $USER
+            find / -user 1000 printO | xargs -O chown -h $USER
+            usermod -aG 1001 $USER
+        useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
+        addgroup --force-badname Many-Faces-God
+        usermod -aG Many-Faces-God pi 
+            echo "Utilisateur pi créé"
+            echo "Utilisateur pi a été ajouté au groupes d'administration"
+    else 
+        addgroup --force-badname Many-Faces-God
+    fi
+    if [[ $USER == $varname ]]; then
+        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
+        echo "Utilisateur $varname a été ajouté au groupes d'administration"
+    else
+        adduser --force-badname $varname
+        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
+            echo "Utilisateur $varname créé"
+            echo "Utilisateur $varname a été ajouté au groupes d'administration"
+    fi
+echo ""    
+echo "############################################################################"
+echo "                 ------- Création des Utilisateurs -----"
+echo "############################################################################"
 echo ""
+echo "############################################################################"
+echo "                 ------- Installation de Nala ----------"
+echo "############################################################################"
 echo ""
-echo "###################################################################"
-echo "                 ------- Installation de Nala ------"
-echo "##################################################################"
-echo ""
-sleep 2
+sleep 3
     echo "Instalation des repertoires"    
     echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
     wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
@@ -49,21 +81,53 @@ sleep 2
     sudo apt install nala -y || sudo apt install nala-legacy -y 
     echo "Nala is Installed"
     sudo nala update && sudo nala upgrade -y
+echo ""    
+echo "############################################################################"
+echo "                 ------- Création des Utilisateurs -----"
+echo "############################################################################"
 echo ""
-sleep 2
-echo "###################################################################"
-echo "              ----- Mise a niveau Logiciels -----"
-echo "###################################################################"
+echo "############################################################################"
+echo "                 ------- Installation de Nala ----------"
+echo "############################################################################"
+echo ""
+echo "############################################################################"
+echo "                 ------- Mise à niveau Logiciels -------"
+echo "############################################################################"
 sleep 2
 echo ""
     sudo nala install htop -y 
     sudo nala install neofetch -y
     sudo nala install docker -y
+    echo "Creating Docker GUI as Portainer"
+    docker volume create portainer_data
+        docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
+     --restart=always \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     -v portainer_data:/data \
+      portainer/portainer-ce:2.9.3
+echo ""    
+echo "############################################################################"
+echo "                 ------- Création des Utilisateurs -----"
+echo "############################################################################"
 echo ""
-echo "###################################################################"
-echo "          ------- Preparation pour Home Automation ------"
-echo "###################################################################"
+echo "############################################################################"
+echo "                 ------- Installation de Nala ----------"
+echo "############################################################################"
 echo ""
+echo "############################################################################"
+echo "                 ------- Mise a niveau Logiciels -------"
+echo "############################################################################"
+echo ""
+echo "############################################################################"
+echo "             ------- Preparation pour Home Automation ------"
+echo "############################################################################"
+echo ""
+sleep 2
+    curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - 
+    sudo nala update -y
+    sudo nala install nodejs -y
+    sudo systemctl enable nodered.service   
+    sudo systemctl start nodered.service 
     sudo nala install mosquitto mosquitto-clients -y
        echo "Creer MDP pour Mosquitto"
        read -s varpasswd
@@ -101,7 +165,7 @@ echo ""
     sudo systemctl enable influxdb
     sudo systemctl start influxdb
     influx
-    xterm -hold -e "CREATE USER admin WITH PASSWORD 'adminpassword' WITH ALL PRIVILEGES" &
+    xterm -hold -e "CREATE USER admin WITH PASSWORD admin WITH ALL PRIVILEGES" &
     xterm -hold -e "exit" &
 echo ""
     echo "faire CTRL+W et chercher HTTP, faire les réglages suivants: "
@@ -123,12 +187,11 @@ echo ""
                              sleep 5 
                              fi
                          fi
-                fi 
+                 fi 
 echo ""
     sudo nano /etc/influxdb/influxdb.conf
     sudo systemctl restart influxdb
-    influx -user $varname -password <$varpasswd>' 
-    #'
+    influx -user admin -password <admin>'#'
     xterm -hold -e "CREATE DATABASE Sensors" &
     xterm -hold -e "exit" &
     sudo nala install build-essential git -y
@@ -136,71 +199,57 @@ echo ""
     npm install node-red-contrib-influxdb
     sudo systemctl enable nodered.service
     sudo systemctl start nodered.service
+    sudo nala update 
+    sudo nala install -y apt-transport-https
+    sudo nala install -y software-properties-common wget
     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
     echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-    sudo nala update 
-    sudo nala install grafana -y
+    sudo nala update && sudo nala upgrade -y
+    sudo nala install grafana
+    sudo systemctl daemon-reload
     sudo systemctl enable grafana-server
-    sudo systemctl start grafana-server    
+    sudo systemctl start grafana-server   
+    sudo systemctl status grafana-server 
     while [ sleep 8 ]; do
         mosquitto_sub -user mqtt_username -P mqtt_password -v -t "#"  
         sleep5 
         exit
     done
+echo ""    
+echo "############################################################################"
+echo "              --------- Création des Utilisateurs ----------"
+echo "############################################################################"
 echo ""
-sleep 2
-echo "###################################################################"
-echo "                 ------- System mis a jour ------"
-echo "###################################################################"
+echo "############################################################################"
+echo "              ---------- Installation de Nala --------------"
+echo "############################################################################"
 echo ""
-sleep 1
-    echo " programmes généraux installés:
+echo "############################################################################"
+echo "              ---------- Mise à niveau Logiciels -----------"
+echo "############################################################################"
+echo ""
+echo "############################################################################"
+echo "              ------ Preparation pour Home Automation ------"
+echo "############################################################################"
+echo ""
+echo "############################################################################"
+echo "              ----------- System mis à jour ----------------"
+echo "############################################################################"
+echo ""
+sleep 0.5
+    echo "Programmes généraux installés:
         - Neofetch
         - HTOP
-        - Docker"
+        - Docker
+        - Portainer (local:9000)"
 echo ""
-    echo "programmes d'automation installés:    
+    echo "Programmes d'automation installés:    
         - Mosquitto-Broker
-        - NodeRed
-        - Grafana"
+        - NodeRed (local:1880)
+        - Influx_DB (local:8086)
+        - Grafana (local:"
 echo ""
-sleep 5
-echo "############################################################################"
-echo "                   ----- Création des Utilisateurs -----"
-echo "############################################################################"
-sleep 2 
-    if [[ $pi == "y" ]]; then
-            usermod -u 1001 $USER
-            groupmod -g 1001 $USER
-            find / -group 1000 -printO | xargs -O chgrp -h $USER
-            find / -user 1000 printO | xargs -O chown -h $USER
-            usermod -aG 1001 $USER
-        useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
-        addgroup --force-badname Many-Faces-God
-        usermod -aG Many-Faces-God pi 
-            echo "Utilisateur pi créé"
-            echo "Utilisateur pi a été ajouté au groupes d'administration"
-    else 
-        addgroup --force-badname Many-Faces-God
-    fi
-    if [[ $USER == $varname ]]; then
-        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-        echo "Utilisateur $varname a été ajouté au groupes d'administration"
-    else
-        adduser --force-badname $varname
-        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-            echo "Utilisateur $varname créé"
-            echo "Utilisateur $varname a été ajouté au groupes d'administration"
-    fi
-echo ""
-echo "##########################################################################"
-echo ""
-    gnome-terminal htop &
-    neofetch
-    sleep 2
-    echo "$varname, le systeme est prêt à etre utilisé"
-    echo "Enjoy =) "
-    sudo su - $varname
+sleep 5    
 echo "##########################################################################"
 echo "                   ----- Dernières Modifications -----"
 echo "##########################################################################"
@@ -211,5 +260,11 @@ sleep 2
      echo "shake" 
      sleep 1 
      echo "shaaaake"
+     gnome-terminal htop &
+     neofetch
+     sleep 2
+    echo "$varname, le systeme est prêt à etre utilisé"
+    echo "Enjoy =) "
+    sudo su - $varname
      chmod -x booty.sh
      mv  booty.sh .booty_shaked.sh  
