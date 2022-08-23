@@ -84,12 +84,25 @@ echo ""
 echo "Initialisation **********"
 echo ""
 echo "########################################################################"
-echo 0.5 && clear
-echo 0.5
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
 echo "Initialisation Complete"
- echo ""
+echo ""
+echo "########################################################################"
+echo ""
+    sleep 1
     echo "-[~]- Bonjour Humanoïde,"
-    sleep 0.5
+    echo "" && sleep 0.5
+    echo "-[~]- Je vais prendre en charge la preparation du systeme pour vous."
+echo ""    
+echo "############################################################################"
+echo "                   ----- Création des Utilisateurs -----"
+echo "############################################################################"
+sleep 2 
+sleep 0.5
+    echo ""
     echo "-[~]- A qui ai-je l'honneur de parler?"
         read varname
         echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
@@ -108,12 +121,7 @@ echo "Initialisation Complete"
                 else
                     echo "-[~]- Vous serez le seul utilisateur ajouter lors de l'installation"
             fi
-    echo "-[~]- Je vais prendre en charge la preparation du systeme pour vous."
-echo ""    
-echo "############################################################################"
-echo "                   ----- Création des Utilisateurs -----"
-echo "############################################################################"
-sleep 2 
+    
     if [[ $pi == "y" ]]; then
             usermod -u 1001 $USER
             groupmod -g 1001 $USER
@@ -182,14 +190,21 @@ sleep 2
 echo ""
     sudo nala install htop -y 
     sudo nala install neofetch -y
-    sudo nala install docker -y
-    echo "Creating Docker GUI as Portainer"
-    docker volume create portainer_data
-        docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
-     --restart=always \
-     -v /var/run/docker.sock:/var/run/docker.sock \
-     -v portainer_data:/data \
-      portainer/portainer-ce:2.9.3
+    sudo nala install docker.io -y
+    sudo nala install docker-compose -y
+      mkdir /docker
+      mkdir /share
+      mkdir /docker/portainer
+      mkdir /docker/portainer/data
+        echo "Creating Docker GUI as Portainer"
+        docker volume create portainer_data
+        docker run -d \
+        -p 8000:8000 -p 9443:9443 \
+        --name portainer \
+        --restart=always \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v portainer_data:/data \
+        portainer/portainer-ce
 clear
 echo ""    
 echo "############################################################################"
@@ -257,8 +272,8 @@ sleep 2
     sudo systemctl enable influxdb
     sudo systemctl start influxdb
     influx
-    xterm -hold -e "CREATE USER admin WITH PASSWORD admin WITH ALL PRIVILEGES" &
-    xterm -hold -e "exit" &
+    sudo xterm -hold -e "CREATE USER admin WITH PASSWORD admin WITH ALL PRIVILEGES" &
+    sudo xterm -hold -e "exit" &
 echo ""
     echo "faire CTRL+W et chercher HTTP, faire les réglages suivants: "
         sleep 1
