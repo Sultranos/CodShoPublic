@@ -93,6 +93,7 @@ echo "Initialisation Complete"
     echo "-[~]- A qui ai-je l'honneur de parler?"
         read varname
         echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
+        sleep 0.5
         echo "-[~]- Etes-vous le même Utilisateur que $USER? (y/n)"
         read answers2
          if [[ $answer == "y" ]]; then 
@@ -140,7 +141,9 @@ echo ""
 echo "############################################################################"
 echo "                 ------- Création des Utilisateurs -----"
 echo "############################################################################"
+sleep 0.2
 echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "                 ------- Installation de Nala ----------"
 echo "############################################################################"
@@ -275,17 +278,18 @@ echo ""
                              if [[ $answer7 == "n" ]]; then
                              sleep 5 
                              fi
-                         fi
+                        fi
+                    else 
+                        sudo nano /etc/influxdb/influxdb.conf
                  fi 
 echo ""
-    sudo nano /etc/influxdb/influxdb.conf
     sudo systemctl restart influxdb
     influx -user admin -password <admin>'#'
-    xterm -hold -e "CREATE DATABASE Sensors" &
-    xterm -hold -e "exit" &
+    sudo xterm -hold -e "CREATE DATABASE Sensors" &
+    sudo xterm -hold -e "exit" &
     sudo nala install build-essential git -y
     bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-    npm install node-red-contrib-influxdb
+    sudo nala install node-red-contrib-influxdb
     sudo systemctl enable nodered.service
     sudo systemctl start nodered.service
     sudo nala update 
