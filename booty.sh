@@ -1,36 +1,113 @@
 #!/bin/bash
 
+echo ""
 echo "########################################################################"
+echo ""
 echo "Initialisation ----------"
-echo 0.5
+echo ""
+echo "########################################################################"
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation *---------"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation **--------"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
 echo "Initialisation ***-------"
-echo 0.5
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation ****------"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation *****-----"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
 echo "Initialisation ******----"
-echo 0.5
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation *******---"
+echo ""
+echo "########################################################################"
+echo 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation ********--"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
 echo "Initialisation *********-"
+echo ""
+echo "########################################################################"
+echo ""
+sleep 0.5 && clear
+echo ""
+echo "########################################################################"
+echo ""
+echo "Initialisation **********"
+echo ""
+echo "########################################################################"
+echo 0.5 && clear
 echo 0.5
 echo "Initialisation Complete"
  echo ""
-    echo "Bonjour Humanoïde,"
+    echo "-[~]- Bonjour Humanoïde,"
     sleep 0.5
-    echo "A qui ai-je l'honneur de parler?"
+    echo "-[~]- A qui ai-je l'honneur de parler?"
         read varname
-        echo "Bienvenue sur le systeme $HOSTNAME $varname"
-        echo "Etes-vous le même Utilisateur que $USER? (y/n)"
+        echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
+        echo "-[~]- Etes-vous le même Utilisateur que $USER? (y/n)"
         read answers2
          if [[ $answer == "y" ]]; then 
             $varname=$USER
         fi
-        echo "Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
+        echo "-[~]- Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
             read pi
             if [[ $pi == "y" ]]; then
-                echo "L'utilisateur pi seras ajouté lors de l'installation"
+                echo "-[~]- L'utilisateur pi seras ajouté lors de l'installation"
             elif [[ $answer == "y" ]]; then
-                    echo "tres bien, $USER"
+                    echo "-[~]- tres bien, $USER"
                 else
-                    echo "Vous serez le seul utilisateur ajouter lors de l'installation"
+                    echo "-[~]- Vous serez le seul utilisateur ajouter lors de l'installation"
             fi
-    echo "Je vais prendre en charge la preparation du systeme pour vous."
+    echo "-[~]- Je vais prendre en charge la preparation du systeme pour vous."
 echo ""    
 echo "############################################################################"
 echo "                   ----- Création des Utilisateurs -----"
@@ -45,25 +122,25 @@ sleep 2
         useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
         addgroup --force-badname Many-Faces-God
         usermod -aG Many-Faces-God pi 
-            echo "Utilisateur pi créé"
-            echo "Utilisateur pi a été ajouté au groupes d'administration"
+            echo "-[~]- Utilisateur pi créé"
+            echo "-[~]- Utilisateur pi a été ajouté au groupes d'administration"
     else 
         addgroup --force-badname Many-Faces-God
     fi
     if [[ $USER == $varname ]]; then
         usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-        echo "Utilisateur $varname a été ajouté au groupes d'administration"
+        echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
     else
         adduser --force-badname $varname
         usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-            echo "Utilisateur $varname créé"
-            echo "Utilisateur $varname a été ajouté au groupes d'administration"
+            echo "-[~]- Utilisateur $varname créé"
+            echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
     fi
 echo ""    
 echo "############################################################################"
 echo "                 ------- Création des Utilisateurs -----"
 echo "############################################################################"
-echo ""
+echo "[x] done"
 echo "############################################################################"
 echo "                 ------- Installation de Nala ----------"
 echo "############################################################################"
@@ -81,15 +158,20 @@ sleep 2
     sudo apt install nala -y || sudo apt install nala-legacy -y 
     echo "Nala is Installed"
     sudo nala update && sudo nala upgrade -y
+    clear
 echo ""    
 echo "############################################################################"
 echo "                 ------- Création des Utilisateurs -----"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "                 ------- Installation de Nala ----------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "                 ------- Mise à niveau Logiciels -------"
 echo "############################################################################"
@@ -105,19 +187,26 @@ echo ""
      -v /var/run/docker.sock:/var/run/docker.sock \
      -v portainer_data:/data \
       portainer/portainer-ce:2.9.3
+clear
 echo ""    
 echo "############################################################################"
 echo "                 ------- Création des Utilisateurs -----"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "                 ------- Installation de Nala ----------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "                 ------- Mise a niveau Logiciels -------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "             ------- Preparation pour Home Automation ------"
 echo "############################################################################"
@@ -219,35 +308,52 @@ echo ""
 echo "############################################################################"
 echo "              --------- Création des Utilisateurs ----------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "              ---------- Installation de Nala --------------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "              ---------- Mise à niveau Logiciels -----------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "              ------ Preparation pour Home Automation ------"
 echo "############################################################################"
-echo ""
+sleep 0.2
+echo "[x] done"
+sleep 0.2
 echo "############################################################################"
 echo "              ----------- System mis à jour ----------------"
 echo "############################################################################"
 echo ""
 sleep 0.5
-    echo "Programmes généraux installés:
-        - Neofetch
-        - HTOP
-        - Docker
-        - Portainer (local:9000)"
+    echo "Programmes généraux installés:"
+    sleep 0.2
+    echo "  - Neofetch"
+        sleep 0.1
+        echo "   - HTOP"
+        sleep 0.1
+        echo "   - Docker"
+        sleep 0.1
+        echo "   - Portainer (local:9000)"
 echo ""
-    echo "Programmes d'automation installés:    
-        - Mosquitto-Broker
-        - NodeRed (local:1880)
-        - Influx_DB (local:8086)
-        - Grafana (local:"
+sleep 0.5
+    echo "Programmes d'automation installés:   "
+    sleep 0.2 
+    echo "  - Mosquitto-Broker"
+        sleep 0.1
+        echo "- NodeRed (local:1880)"
+        sleep 0.1
+        echo "- Influx_DB (local:8086)"
+        sleep 0.1
+        echo "- Grafana (local:"
 echo ""
 sleep 5    
 echo "##########################################################################"
