@@ -2,70 +2,71 @@
 
 # Jusqu'a la ligne 81 c'est des fioritures pour me faire juste kiffer
 
+clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[0;34m----------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[0;31m*\e[0m\e[0;34m---------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[0;31m**\e[0m\e[0;34m--------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m*\e[0m\e\e[0;34m-------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e\e[0;34m------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m*\e[0m\e[0;34m-----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[0;34m----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m*\e[0m\e[0;34m---\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;34m--\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m*\e[0m\e[0;34m-\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo ""
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m**\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.5 && clear
+sleep 0.2 && clear
 echo ""
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "              \e[0;34mInitialisation\e[0m Complete"
@@ -73,65 +74,93 @@ echo -e "\e[1;33m ##############################################################
 echo ""
     sleep 1
     echo "-[~]- Bonjour Humanoïde,"
-    echo "" && sleep 0.5
+    echo "" && sleep 1
     echo "-[~]- Je vais prendre en charge la preparation du systeme pour vous."
-    sleep 0.5 && clear
+    echo "" && sleep 1
+    echo "-[~]- Désirez vous ajouter des Utilisateur lors de l'instalation ? (yes/no)"
+        echo ""
+        echo -e "\e[1;32m --->  \e[0m" && read ModUser
+            if [[ $ModUser == "yes" ]]; then
+                echo ""    
+                echo -e "\e[1;33m ######################################################################## \e[0m"
+                echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
+                echo -e "\e[1;33m ######################################################################## \e[0m"
+                sleep 1.5
+                    echo ""
+                    echo "-[~]- A qui ai-je l'honneur de parler?"
+                        echo -e "\e[1;32m --->  \e[0m" && read varname
+                        echo ""
+                        echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
+                        echo "" && sleep 1
+                        echo "-[~]- Etes-vous le même Utilisateur que $USER? (y/N)"
+                        echo ""
+                        echo -e "\e[1;32m --->  \e[0m" && read answers
+                            if [[ $answers == "y" ]]; then 
+                                $varname=$USER
+                            fi
+                        echo ""
+                        echo "-[~]- Desirez vous ajouter un utilisateur pi avec UID1000? (y/N)"
+                            echo -e "\e[1;32m --->  \e[0m" && read pi
+                            if [[ $pi == "y" ]]; then
+                                echo ""
+                                echo "-[~]- L'utilisateur pi seras ajouté lors de l'installation"
+                            elif [[ $answer == "y" ]]; then
+                                    echo ""
+                                    echo "-[~]- tres bien, $USER Je vais pouvoir démarrer, "
+                                else
+                                    echo ""
+                                    echo "-[~]- Vous serez le seul utilisateur ajouter lors de l'installation"
+                            fi
+                    
+                        if [[ $pi == "y" ]]; then
+                           if [[ $USER == "pi" ]]; then
+                                sudo usermod -aG sudo pi
+                                sudo addgroup --force-badname Many-Faces-God
+                                sudo usermod -aG Many-Faces-God pi 
+                            elif [[ $USER == "" ]]; then
+                                su
+                                sudo usermod -u 1001 $UID1000
+                                sudo groupmod -g 1001 $UID1000
+                                sudo find / -group 1000 -print0 | xargs -0 chgrp -h $USER
+                                sudo find / -user 1000 print0 | xargs -0 chown -h $USER
+                                sudo usermod -aG 1001 $USER
+                                sudo useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
+                                sudo addgroup --force-badname Many-Faces-God
+                                sudo usermod -aG Many-Faces-God pi 
+                                    echo "-[~]- Utilisateur pi créé"
+                                    echo ""
+                                    echo "-[~]- Utilisateur pi a été ajouté au groupes d'administration"       
+                        else 
+                            sudo addgroup --force-badname Many-Faces-God
+                        fi
+                    if [[ $USER == $varname ]]; then
+                        sudo usermod -v -aG sudo $varname && usermod -aG Many-Faces-God $varname
+                        echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
+                    else
+                        sudo adduser -v --force-badname $varname
+                        sudo usermod -v -aG sudo $varname && usermod -aG Many-Faces-God $varname
+                            echo "-[~]- Utilisateur $varname créé"
+                            echo ""
+                            echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
+                            echo ""
+                    fi
+            elif [[ $ModUser == "no" ]]; then 
+                echo "-[~]- Aucun utilisateur créé à votre demande"
+                sleep 1
+            fi
 echo ""    
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 2 
-sleep 0.5
-    echo ""
-    echo "-[~]- A qui ai-je l'honneur de parler?"
-        read varname
-        echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
-        sleep 0.5
-        echo "-[~]- Etes-vous le même Utilisateur que $USER? (y/n)"
-        read answers
-         if [[ $answers == "y" ]]; then 
-            $varname=$USER
-        fi
-        echo "-[~]- Desirez vous ajouter un utilisateur pi avec UID1000? (y/n)"
-            read pi
-            if [[ $pi == "y" ]]; then
-                echo "-[~]- L'utilisateur pi seras ajouté lors de l'installation"
-            elif [[ $answer == "y" ]]; then
-                    echo "-[~]- tres bien, $USER"
-                else
-                    echo "-[~]- Vous serez le seul utilisateur ajouter lors de l'installation"
-            fi
-    
-    if [[ $pi == "y" ]]; then
-            usermod -u 1001 $USER
-            groupmod -g 1001 $USER
-            find / -group 1000 -print0 | xargs -0 chgrp -h $USER
-            find / -user 1000 print0 | xargs -0 chown -h $USER
-            usermod -aG 1001 $USER
-        useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
-        addgroup --force-badname Many-Faces-God
-        usermod -aG Many-Faces-God pi 
-            echo "-[~]- Utilisateur pi créé"
-            echo "-[~]- Utilisateur pi a été ajouté au groupes d'administration"
-    else 
-        addgroup --force-badname Many-Faces-God
+    if [[ $ModUser == "yes" ]]; then
+           sleep 0.2
+           echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+           sleep 0.2 
+    elif [[ $ModUser == "no" ]]; then
+             sleep 0.2
+             echo -e "[\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.2 
     fi
-    if [[ $USER == $varname ]]; then
-        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-        echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
-    else
-        adduser --force-badname $varname
-        usermod -aG sudo $varname && usermod -aG Many-Faces-God $varname
-            echo "-[~]- Utilisateur $varname créé"
-            echo "-[~]- Utilisateur $varname a été ajouté au groupes d'administration"
-    fi
-echo ""    
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "                \e[0;34m-------\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
@@ -152,21 +181,27 @@ sleep 2
     clear
 echo ""    
 echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "                 \e[0;34m-------\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
+echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
+    if [[ $ModUser == "yes" ]]; then
+             sleep 0.2
+             echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+             sleep 0.2 
+    elif [[ $ModUser == "no" ]]; then
+             sleep 0.2
+             echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.2 
+    fi
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                 \e[0;34m-------\e[0m Mise à niveau Logiciels \e[0;34m-------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 2
+sleep 1
 echo ""
     sudo nala install htop -y 
     sudo nala install neofetch -y
@@ -188,22 +223,28 @@ echo ""
 clear
 echo ""    
 echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "                 \e[0;34m-------\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
+echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
+    if [[ $ModUser == "yes" ]]; then
+           sleep 0.2
+           echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+           sleep 0.2 
+    elif [[ $ModUser == "no" ]]; then
+             sleep 0.2
+             echo -e "[\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.2 
+    fi
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "                 \e[0;34m-------\e[0m Mise a niveau Logiciels \e[0;34m-------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "             \e[0;34m-------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
@@ -229,7 +270,7 @@ sleep 2
             echo -e "\e[1;31mpassword_file /etc/mosquitto/pwfile\e[1m"
             echo ""
             echo "contiue ? (Y/n)"
-            until [[ $answer2 == "Yes";"yes";"Y";"Yes" ]]
+            until [[ $answer2 == "Yes" ; "yes" ; "Y" ; "Yes" ]]
                 do
                 sleep 0.5
                 read answer2
@@ -294,34 +335,40 @@ echo ""
     sudo systemctl start grafana-server   
     sudo systemctl status grafana-server 
     while [ sleep 8 ]; do
-        mosquitto_sub -user mqtt_username -P mqtt_password -v -t "#"  
-        sleep5 
+        mosquitto_sub -user $varname -P $varpasswd -v -t "#"  
+        sleep 5 
         exit
     done
 echo ""    
 echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "              \e[0;34m---------\e[0m Création des Utilisateurs \e[0;34m----------\e[0m"
+echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
+    if [[ $ModUser == "yes" ]]; then
+             sleep 0.2
+             echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+             sleep 0.2 
+    elif [[ $ModUser == "no" ]]; then
+             sleep 0.2
+             echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.2 
+    fi
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "              \e[0;34m----------\e[0m Installation de Nala \e[0;34m--------------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "              \e[0;34m----------\e[0m Mise à niveau Logiciels \e[0;34m-----------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "              \e[0;34m------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
 echo -e "\e[1;33m ######################################################################## \e[0m"
 sleep 0.2
-echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
+echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
 sleep 0.2
 echo -e "\e[1;33m ######################################################################## \e[0m"
 echo -e "              \e[0;34m-----------\e[0m System mis à jour \e[0;34m----------------\e[0m"
@@ -366,5 +413,5 @@ sleep 2
     echo "$varname, le systeme est prêt à etre utilisé"
     echo "Enjoy =) "
     sudo su - $varname
-     chmod -x booty.sh
-     mv  booty.sh .booty_shaked.sh 
+     mv  booty.sh .booty_shaked.sh
+     
