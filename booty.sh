@@ -4,103 +4,117 @@
 
 clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[0;34m----------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2 && clear
+echo -e "\e[1;33m ########################################################################  \e[0m"
+echo -e "              \e[0;34mInitialisation\e[0m  \e[0;34m----------\e[0m"
+echo -e "\e[1;33m ########################################################################  \e[0m"
+    barre=' ######################################################################## '
+    Barre=`echo -e "\e[1;33m$barre\e[0m"`
+    LoadStart='              \e[0;34mInitialisation\e[0m  '
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[0;31m*\e[0m\e[0;34m---------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[0;31m*\e[0m\e[0;34m---------\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+    fleche='  ----> '
+    Fleche=`echo -e "\e[0;32m$fleche\e[0;m"`
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[0;31m**\e[0m\e[0;34m--------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo -e "$LoadStart \e[0;31m**\e[0m\e[0;34m--------\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m*\e[0m\e\e[0;34m-------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m*\e[0m\e\e[0;34m-------\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e\e[0;34m------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e\e[0;34m------\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m*\e[0m\e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m*\e[0m\e[0;34m-----\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[0;34m----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[0;34m----\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m*\e[0m\e[0;34m---\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m*\e[0m\e[0;34m---\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;34m--\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;34m--\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m*\e[0m\e[0;34m-\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m*\e[0m\e[0;34m-\e[0m"
+echo "$Barre"
 echo ""
-sleep 0.2 && clear
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "               \e[0;34mInitialisation\e[0m \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m**\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2 && clear
+echo "$Barre"
+echo -e "$LoadStart \e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m**\e[0m"
+echo "$Barre"
+sleep 0.3 
+clear
 echo ""
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "              \e[0;34mInitialisation\e[0m Complete"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo ""
-    sleep 1
+echo "$Barre"
+echo -e "             \e[0;34mInitialisation\e[0m Complete"
+echo "$Barre"
+echo "" && sleep 1
     echo "-[~]- Bonjour Humanoïde,"
     echo "" && sleep 1
     echo "-[~]- Je vais prendre en charge la preparation du systeme pour vous."
     echo "" && sleep 1
     echo "-[~]- Désirez vous ajouter des Utilisateur lors de l'instalation ? (yes/no)"
         echo ""
-        echo -e "\e[1;32m --->  \e[0m" && read ModUser
+        read -p "$Fleche" ModUser
             if [[ $ModUser == "yes" ]]; then
                 echo ""    
-                echo -e "\e[1;33m ######################################################################## \e[0m"
+                echo "$Barre"
                 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-                echo -e "\e[1;33m ######################################################################## \e[0m"
+                echo "$Barre"
                 sleep 1.5
                     echo ""
                     echo "-[~]- A qui ai-je l'honneur de parler?"
-                        echo -e "\e[1;32m --->  \e[0m" && read varname
+                        read -p "$Fleche" varname
                         echo ""
                         echo "-[~]- Bienvenue sur le systeme $HOSTNAME $varname"
                         echo "" && sleep 1
                         echo "-[~]- Etes-vous le même Utilisateur que $USER? (y/N)"
                         echo ""
-                        echo -e "\e[1;32m --->  \e[0m" && read answers
+                        read -p "$Fleche" answers
                             if [[ $answers == "y" ]]; then 
                                 $varname=$USER
                             fi
                         echo ""
                         echo "-[~]- Desirez vous ajouter un utilisateur pi avec UID1000? (y/N)"
-                            echo -e "\e[1;32m --->  \e[0m" && read pi
+                            read -p "$Fleche" pi
                             if [[ $pi == "y" ]]; then
                                 echo ""
                                 echo "-[~]- L'utilisateur pi seras ajouté lors de l'installation"
@@ -149,28 +163,28 @@ echo ""
                 sleep 1
             fi
 echo ""    
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
     if [[ $ModUser == "yes" ]]; then
-           sleep 0.2
-           echo -e "[\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-           sleep 0.2 
+           sleep 0.3
+           echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+           sleep 0.3 
     elif [[ $ModUser == "no" ]]; then
-             sleep 0.2
-             echo -e "[\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
-             sleep 0.2 
+             sleep 0.3
+            echo -e "[\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.3 
     fi
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo ""
 sleep 3
     echo "Instalation des repertoires"    
     echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
     wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
 echo ""
-    echo "Source Repo"
+    echo "Sorce Repo"
     echo "deb-src https://deb.volian.org/volian/ scar main" | sudo tee -a /etc/apt/sources.list.d/volian-archive-scar-unstable.list
 sleep 2
     sudo apt update
@@ -180,27 +194,27 @@ sleep 2
     sudo nala update && sudo nala upgrade -y
     clear
 echo ""    
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
     if [[ $ModUser == "yes" ]]; then
-             sleep 0.2
-             echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-             sleep 0.2 
+             sleep 0.3
+             echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+             sleep 0.3 
     elif [[ $ModUser == "no" ]]; then
-             sleep 0.2
-             echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
-             sleep 0.2 
+             sleep 0.3
+            echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.3 
     fi
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "                 \e[0;34m-------\e[0m Mise à niveau Logiciels \e[0;34m-------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
+sleep 0.3
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+sleep 0.3
+echo "$Barre"
+echo -e "                \e[0;34m-------\e[0m Mise à niveau Logiciels \e[0;34m-------\e[0m"
+echo "$Barre"
 sleep 1
 echo ""
     sudo nala install htop -y 
@@ -222,33 +236,33 @@ echo ""
         portainer/portainer-ce
 clear
 echo ""    
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
     if [[ $ModUser == "yes" ]]; then
-           sleep 0.2
-           echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-           sleep 0.2 
+           sleep 0.3
+           echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+           sleep 0.3 
     elif [[ $ModUser == "no" ]]; then
-             sleep 0.2
-             echo -e "[\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
-             sleep 0.2 
+             sleep 0.3
+            echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.3 
     fi
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                 \e[0;34m-------\e[0m Installation de Nala \e[0;34m----------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
+echo "$Barre"
+sleep 0.3
 echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "                 \e[0;34m-------\e[0m Mise a niveau Logiciels \e[0;34m-------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
+sleep 0.3
+echo "$Barre"
+echo -e "                \e[0;34m-------\e[0m Mise a niveau Logiciels \e[0;34m-------\e[0m"
+echo "$Barre"
+sleep 0.3
 echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "             \e[0;34m-------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+sleep 0.3
+echo "$Barre"
+echo -e "            \e[0;34m-------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
+echo "$Barre"
 echo ""
 sleep 2
     curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - 
@@ -266,11 +280,11 @@ sleep 2
        echo "copier et coller les lignes suivante dans le dos au dessus de "include_dir" "
        sleep 1
        echo ""
-            echo -e "\e[1;31mallow_anonymous false\[1m"
-            echo -e "\e[1;31mpassword_file /etc/mosquitto/pwfile\e[1m"
+            echo -e "\e[1;31mallow_anonymous false\e[0m"
+            echo -e "\e[1;31mpassword_file /etc/mosquitto/pwfile\e[0m"
             echo ""
             echo "contiue ? (Y/n)"
-            until [[ $answer2 == "Yes" ; "yes" ; "Y" ; "Yes" ]]
+            until [[ $answer2 == "Y" ]]
                 do
                 sleep 0.5
                 read answer2
@@ -279,7 +293,7 @@ sleep 2
         sudo /etc/init.d/mosquitto restart
 
         echo "instalation influxdb" && sleep 1
-    wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+    wget -qO- https://repos.influxdata.com/influxdb.key | gpg –dearmor | sudo tee /usr/share/keyrings/influx-archive-keyring.gpg
     lsb_release -a
     echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
     sudo nala update 
@@ -300,17 +314,11 @@ echo ""
             echo "ping-auth-enabled = true"
             echo "contiue ? (Y/n)"
                 read answer5
-                if [[ $answer5 == "n" ]]; then
-                    sleep 5 echo "contiue ? (Y/n)"
-                    read answer6
-                         if [[ $answer6 == "n" ]]; then
-                         sleep 5 echo "contiue ? (Y/n)"
-                         read answer7
-                             if [[ $answer7 == "n" ]]; then
-                             sleep 5 
-                             fi
-                        fi
-                    else 
+                until [[ $answer5 == "Y" ]]
+                    do
+                    sleep 0.5
+                    read answer5
+                done 
                         sudo nano /etc/influxdb/influxdb.conf
                  fi 
 echo ""
@@ -327,7 +335,7 @@ echo ""
     sudo nala install -y apt-transport-https
     sudo nala install -y software-properties-common wget
     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-    echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+    echo "deb  [signed-by=/usr/share/keyrings/grafana-archive-keyring.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
     sudo nala update && sudo nala upgrade -y
     sudo nala install grafana
     sudo systemctl daemon-reload
@@ -340,44 +348,44 @@ echo ""
         exit
     done
 echo ""    
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                   \e[0;34m-----\e[0m Création des Utilisateurs \e[0;34m-----\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
     if [[ $ModUser == "yes" ]]; then
-             sleep 0.2
+             sleep 0.3
              echo -e "     [\e[0;32mX\e[1m] ~ \e[1;34mDone\e[0m"
-             sleep 0.2 
+             sleep 0.3 
     elif [[ $ModUser == "no" ]]; then
-             sleep 0.2
-             echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
-             sleep 0.2 
+             sleep 0.3
+            echo -e "     [\e[0;31m@\e[0m] ~ \e[1;33mDenied by user\e[0m"
+             sleep 0.3 
     fi
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "              \e[0;34m----------\e[0m Installation de Nala \e[0;34m--------------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
+echo "$Barre"
+sleep 0.3
 echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "              \e[0;34m----------\e[0m Mise à niveau Logiciels \e[0;34m-----------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "              \e[0;34m------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
-sleep 0.2
-echo -e "[\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
-sleep 0.2
-echo -e "\e[1;33m ######################################################################## \e[0m"
-echo -e "              \e[0;34m-----------\e[0m System mis à jour \e[0;34m----------------\e[0m"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+sleep 0.3
+echo "$Barre"
+echo -e "             \e[0;34m----------\e[0m Mise à niveau Logiciels \e[0;34m-----------\e[0m"
+echo "$Barre"
+sleep 0.3
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+sleep 0.3
+echo "$Barre"
+echo -e "             \e[0;34m------\e[0m Preparation pour Home Automation \e[0;34m------\e[0m"
+echo "$Barre"
+sleep 0.3
+echo -e "     [\e[0;32mX\e[0m] ~ \e[1;34mDone\e[0m"
+sleep 0.3
+echo "$Barre"
+echo -e "             \e[0;34m-----------\e[0m System mis à jour \e[0;34m----------------\e[0m"
+echo "$Barre"
 echo ""
 sleep 0.5
     echo "Programmes généraux installés:"
-    sleep 0.2
-    echo "  - Neofetch"
+    sleep 0.3
+    echo "   Neofetch"
         sleep 0.1
         echo "   - HTOP"
         sleep 0.1
@@ -387,7 +395,7 @@ sleep 0.5
 echo ""
 sleep 0.5
     echo "Programmes d'automation installés:   "
-    sleep 0.2 
+    sleep 0.3 
     echo "  - Mosquitto-Broker"
         sleep 0.1
         echo "- NodeRed (local:1880)"
@@ -397,9 +405,9 @@ sleep 0.5
         echo "- Grafana (local:"
 echo ""
 sleep 5    
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 echo -e "                   \e[0;34m----- Dernières Modifications \e[0;34m-----"
-echo -e "\e[1;33m ######################################################################## \e[0m"
+echo "$Barre"
 sleep 2 
      echo "Suppression de Booty.sh des fichier executables"
      echo "booty shake" 
