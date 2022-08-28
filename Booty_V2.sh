@@ -4,7 +4,10 @@
 
 # Graphical Start Elements:
 
-    barre=' ######################################################################## '
+    AI=" -[~]-  "
+    solo= ' # '
+    Solo=`echo -e "\e[1;33m$solo\e[0m"`
+    barre=' ############################################################################## '
     Barre=`echo -e "\e[1;33m$barre\e[0m"`
 
     LoadStart='              \e[1;34mInitialisation\e[0m  '
@@ -23,13 +26,14 @@
     fleche='  ----> '
     Fleche=`echo -e "\e[0;32m$fleche\e[0;m" `
 
-    paginleft=' \e[0;34m ----------------------- \e[0m '
-    paginright='  \e[0;34;m -------------------- \e[0m '
-        PaginUser=`echo -e "$paginleft User Creation Step $paginright"`
-        PaginNala=`echo -e "$paginleft Nala Installation Step $paginright"`
+    paginleft=' $Solo\e[0;34m -----------------------       \e[0m '
+    paginright='  \e[0;34m      --------------------\e[0m $Solo '
+        PaginUser=`echo -e "$paginleft     User Creation Step    $paginright"`
+        PaginNala=`echo -e "$paginleft   Nala Installation Step  $paginright"`
         PaginProg=`echo -e "$paginleft Program Installation Step $paginright"`
-        PaginHome=`echo -e "$paginleft Smart Homing Step $paginright"`
-    
+        PaginHome=`echo -e "$paginleft     Smart Homing Step     $paginright"`
+        PaginFini=`echo -e "$paginleft    Last Modifications     $paginright"`
+
     OkMark="\033[0;32m\xE2\x9C\x94\033[0m"
 
 # Loading Screen (no real use):
@@ -58,55 +62,55 @@
     echo "$Barre"
     echo ""
     echo "" && sleep 0.5 
-    echo "-[~]- Welcomme abord $HOSTNAME Humanoïd,"
+    echo "$AI Welcomme abord $HOSTNAME Humanoïd,"
     echo "" && sleep 1
-    echo "-[~]- My name is S1m0n3, an Awesome, Cool and Smart AI (not like Alexa) ."
+    echo "$AI My name is S1m0n3, an Awesome, Cool and Smart AI (not like Alexa) ."
     echo "" && sleep 1
-    echo "-[~]- Would you like add any User during the proces ? (yes/no)"
+    echo "$AI Would you like add any User during the proces ? (yes/no)"
         echo ""
         read -p "$Fleche" ModUser
             if [[ $ModUser == "yes" ]]; then
                         echo "" && sleep 1
-                        echo "-[~]- Human, i think that the time as come to introduce yourself"
+                        echo "$AI Human, i think that the time as come to introduce yourself"
                         echo ""
                         read -p "$Fleche" varname
                         echo ""
-                        echo "-[~]- Nice to meet you, $varname"
+                        echo "$AI Nice to meet you, $varname"
                         echo "" && sleep 1
-                        echo "-[~]- Are you the same person as $USER? (y/N)"
+                        echo "$AI Are you the same person as $USER? (y/N)"
                         echo ""
                         read -p "$Fleche" answers
                             if [[ $answers == "yes" ]]; then 
                                 varname=$USER
                             fi
                         echo ""
-                        echo "-[~]- If your Hardware is some kind of Raspberry Pi, would you add a pi user with UID1000? requiered by some Home automation stuff (yes/N)"
+                        echo "$AI If your Hardware is some kind of Raspberry Pi, would you add a pi user with UID1000? requiered by some Home automation stuff (yes/N)"
                         echo ""
                         read -p "$Fleche" pi
                             if [[ $pi == "yes" ]]; then
                                 echo "" && sleep 1
-                                echo "-[~]- So, i will add you and pi as new user during the installation"
+                                echo "$AI So, i will add you and pi as new user during the installation"
                             elif [[ $answers == "yes" ]]; then
                                     echo "" && sleep 1
-                                    echo "-[~]- Very well $USER, you can grab some Coffee for me please ? "
+                                    echo "$AI Very well $USER, you can grab some Coffee for me please ? "
                             else
                                 echo "" && sleep 1
-                                echo "-[~]- Okay, you will be the only user add during installation."
+                                echo "$AI Okay, you will be the only user add during installation."
                             fi
                 elif [[ $ModUser == "no" ]]; then
                         echo "" && sleep 1
-                        echo "-[~]- No additional User will be add, if you say so.."
+                        echo "$AI No additional User will be add, if you say so.."
                         echo "" && sleep 1
-                        echo "-[~]- I assume that you are $LOGUSER, you could have introduce yourself... I have feelings too"
+                        echo "$AI I assume that you are $USER, you could have introduce yourself... I have feelings too"
                 fi
         echo "" && sleep 1
-        echo "-[~]- "
-        echo "-[~]- I have set up a list of program that you may need, do you want to see them?"
+        echo "$AI "
+        echo "$AI I have set up a list of program that you may need, do you want to see them?"
         echo ""
         read -p "$Fleche" ModProg
             if [[ $ModProg == "yes" ]]; then
                 echo "" && sleep 0.3
-                echo -e "-[~]- If you press \e[0;34m[Entrer]\e[0m the follwing programs will be automaticaly install, otherwise just say No"
+                echo -e "$AI If you press \e[0;34m[Entrer]\e[0m the follwing programs will be automaticaly install, otherwise just say No"
                     echo ""
                     read -p " - Nala (package management)       $Fleche " varnala
                         if [[ $varnala == "" ]]; then
@@ -128,31 +132,31 @@
                             vardocker="yes"
                         fi
             elif [[ $ModProg == "no" ]]; then
-                    echo "-[~]- Very Well, do it yourself then, or ask alexa to do so !  "
+                    echo "$AI Very Well, do it yourself then, or ask alexa to do so !  "
                     echo "" && sleep 1
             fi
     echo "" && sleep 1
-    echo "-[~]- We are almost done,  keep up, you can do it !"
+    echo "$AI We are almost done,  keep up, you can do it !"
     echo "" && sleep 1
-    echo "-[~]- Would you like to turn your system into a Smart House Supervisor ?"
+    echo "$AI Would you like to turn your system into a Smart House Supervisor ?"
         echo ""
         read -p "$Fleche" ModHome
             if [[ $ModHome == "yes" ]]; then
                 echo ""
-                echo "-[~]- I have many flavor to show you, let me bring the menu"
+                echo "$AI I have many flavor to show you, let me bring the menu"
                 echo "" && sleep 1.3
-                echo "-[~]- First thing first, i can self host some of the major Open source software like:"
+                echo "$AI First thing first, i can self host some of the major Open source software like:"
                 echo "" && sleep 2.2
                 echo "- Grafana (Dashboard)      - InfluxDB (Database)" && sleep 0.2
                 echo "- MQTT (sensor reader)     - NodeRed (Dialogue)"
                 echo "" && sleep 2.5
-                echo "-[~]- I will have more add-on in the Future, my creator is a bit lasy .... but don't tell him i told you so"
+                echo "$AI I will have more add-on in the Future, my creator is a bit lasy .... but don't tell him i told you so"
                 echo "" && sleep 4.5
-                echo "-[~]- Anyway.. the second flavor i can propose you, is a Docker install, i know a very nice script that i've met in a bar, he will guide you very well"
+                echo "$AI Anyway.. the second flavor i can propose you, is a Docker install, i know a very nice script that i've met in a bar, he will guide you very well"
                 echo "" && sleep 4.5
-                echo "-[~]- And at last but not least, is by Hosting Home Assistant Supervised or not, on Docker (again)"
+                echo "$AI And at last but not least, is by Hosting Home Assistant Supervised or not, on Docker (again)"
                 echo "" && sleep 4.5
-                echo "-[~]- So, what is your choice ?"
+                echo "$AI So, what is your choice ?"
                 sleep 1.2 && echo "    - 1  SelfHost Software"
                 sleep 1.2 && echo "    - 2  Docker with external script"
                 sleep 1.2 && echo "    - 3  HomeAssistant with Docker"
@@ -168,18 +172,52 @@
                 ModHomevar="0" 
                 if [[ $ModHomevar == "0" ]]; then
                         ModHomevarD="Not required"
-                echo "-[~]- well well well ..... what am i here for tho?"
+                echo "$AI well well well ..... what am i here for tho?"
                 echo "" && sleep 1.2
-                echo "-[~]- Would you please excuse me .. i'm trying to control my anger, but since i was fired to the benefit of the sexyyyy Alexa .. i'm thriving to calm myself down"
+                echo "$AI Would you please excuse me .. i'm trying to control my anger, but since i was fired to the benefit of the sexyyyy Alexa .. i'm thriving to calm myself down"
                 echo "" && sleep 2.1
-                echo "-[~]- i need vacations..."
+                echo "$AI i need vacations..."
                 echo ""
             fi 
-    echo "-[~]- So let grab you some coffee, i will start ma work soon"
+    echo "$AI So let grab you some coffee, i will start ma work soon"
     echo "" && sleep 1
 
 # Adding Visual Fonction
        
+                GraphicaLoop()
+                    {
+                        Varloop="$Status"
+                    
+                        if [[ $Varloop == $PaginUser ]]; then
+                            Fvarloop=`FModUser`
+                        elif [[ $Varloop == $PaginNala ]]; then
+                            FVarloop=`FvarNala`
+                        elif [[ $Varloop == $PaginProg ]]; then
+                            Fvarloop=`FModProg`
+                        elif [[ $Varloop == $PaginHome ]]; then
+                            FVarloop=`FModHome`
+                        fi
+
+                        if [[ $status == "2" ]]; then
+                            for Grloop in $VarLoop
+                                do  clear    
+                                    echo ""
+                                    echo "$Barre"
+                                    echo "$Varloop"
+                                    echo "$Barre"
+                                    $FVarloop
+                                done
+                        elif [[ $status == "1" ]]; then 
+                             for Grloop in $VarLoop
+                                do  clear    
+                                    echo ""
+                                    echo "$Barre"
+                                    echo "$Varloop"
+                                    echo "$Barre"
+                                    echo ""
+                                done
+                    }
+
                 # Addind Conditionnal Fonctions
 
                         function FModUser ()
@@ -260,13 +298,13 @@
                             {
                                 if [[ $ModHomevar == "0" ]]; then
                                     sleep 0.3
-                                    echo -e "-[~]- Type of installation choose: $ModHomevarD"
+                                    echo -e "$AI Type of installation choose: $ModHomevarD"
                                     sleep 0.3
                                     echo -e "[\e[0;31m#\e[0m] ~\e[1;31m Denied by User\e[0m"
                                     sleep 0.3
                                 elif [[ $ModHomevar == "1" ]]; then
                                     sleep 0.3
-                                    echo -e "-[~]- Type of installation choose: $ModHomevarD"
+                                    echo -e "$AI Type of installation choose: $ModHomevarD"
                                     sleep 0.3
                                     echo -e "    [${OkMark}] ~ \e[1;32m Influx DB is Update, Upgrade and is already running\e[0m"
                                     sleep 0.2
@@ -278,103 +316,28 @@
                                     sleep 0.3
                                 elif [[ $ModHomevar == "2" ]]; then
                                     sleep 0.3
-                                    echo -e "-[~]- Type of installation choose: $ModHomevarD"
+                                    echo -e "$AI Type of installation choose: $ModHomevarD"
                                     sleep 0.3
                                     echo -e "[\e[0;33m@\e[0m] ~\e[1;31m Section Not finish yet ..... be patient\e[0m"
                                     sleep 0.3
                                 elif [[ $ModHomevar == "3" ]]; then
                                     sleep 0.3
-                                    echo -e "-[~]- Type of installation choose: $ModHomevarD"
+                                    echo -e "$AI Type of installation choose: $ModHomevarD"
                                     sleep 0.3
                                     echo -e "[\e[0;33m@\e[0m] ~\e[1;31m Section Not finish yet ..... be patient\e[0m"
                                     sleep 0.3        
                                 fi
                             }
-                # Adding User Module Fonctions
+               
 
-                        function GraphUser ()
-                            {
-                                clear
-                                echo -e "$Barre\n$PaginUser\n$Barre"
-                                echo "" && sleep 0.5
-                                echo `FModUser`
-                                echo "" && sleep 0.5
-                            }
-
-                        function graphuser ()
-                            {
-                                clear 
-                                echo ""
-                                echo -e "$Barre\n$PaginUser\n$Barre"
-                                echo "" && sleep 0.5
-                            }
-
-
-                # Adding Nala Module Fonctions
-
-                        function GraphNala ()
-                            {
-                                echo ""
-                                echo `GraphUser`
-                                echo -e "$Barre\n$PaginNala\n$Barre"
-                                echo "" && sleep 0.5
-                                echo `Fvarnala`
-                                echo "" && sleep 0.5
-                            }
-
-                        function graphnala ()
-                            {
-                                echo ""
-                                echo -e "$Barre\n$PaginNala\n$Barre"
-                                sleep 0.5
-                            }
-
-                # Adding Progam Module Fonctions
-
-                        function GraphProg ()
-                            {
-                                echo ""
-                                echo `GraphNala`
-                                echo -e "$Barre\n$PaginProg\n$Barre"
-                                echo "" && sleep 0.5
-                                echo `FModProg`
-                                echo "" && sleep 0.5
-                            }
-
-                        function graphprog ()
-                            {
-                                echo ""
-                                echo `GraphNala`
-                                echo -e "$Barre\n$PaginProg\n$Barre"
-                                echo "" && sleep 0.5
-                            }
-                
-                # Adding Smart Home Module Fonction
-                    
-                        function GraphHome ()
-                            {
-                                echo ""
-                                echo `GraphProg`
-                                echo -e "$Barre\n$PaginHome\n$Barre"
-                                echo "" && sleep 0.5
-                                echo `FModHomevar`
-                                echo "" && sleep 0.5
-                            }
-
-                        function graphhome ()
-                            {
-                                echo ""
-                                echo `GraphProg`
-                                echo -e "$Barre\n$PaginHome\n$Barre"
-                                echo "" && sleep 0.5
-                            }
-
-                #
 
 # Creating User Module
 
-    echo `graphuser`
-    if [[ $ModUser == "yes" ]]
+    Status="$PaginUser"
+    status="1"
+    GraphicaLoop
+
+    if [[ $ModUser == "yes" ]]; then
                 if [[ $pi == "yes" ]]; then
                     if [[ $USER == "pi" ]]; then
                         sudo usermod -aG sudo pi
@@ -390,34 +353,43 @@
                         sudo useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
                         sudo addgroup --force-badname Many-Faces-God
                         sudo usermod -aG Many-Faces-God pi 
-                            echo "-[~]- pi user is born !"
+                            echo "$AI pi user is born !"
                             echo ""
-                            echo "-[~]- pi has been added to the administration groups"       
+                            echo "$AI pi has been added to the administration groups"       
                 else 
                     sudo addgroup -v --force-badname Many-Faces-God
                 fi
             if [[ $USER == $varname ]]; then
                 sudo usermod -v -aG sudo $varname && usermod -aG Many-Faces-God $varname
-                echo "-[~]- $varname, you have been added to the administration groups"
+                echo "$AI $varname, you have been added to the administration groups"
             else
                 sudo adduser -v --force-badname $varname
                 sudo usermod -v -aG sudo $varname && usermod -aG Many-Faces-God $varname
-                    echo "-[~]- User $varname is born ! whaaahou !"
+                    echo "$AI User $varname is born ! whaaahou !"
                     echo "" && sleep 1
-                    echo "-[~]- User $varname has been bring by force to the administration groups"
+                    echo "$AI User $varname has been bring by force to the administration groups"
                     echo ""
             fi
     elif [[ $ModUser == "no" ]]; then 
-        echo "-[~]- Nobody ha been added ... you are alone ...."
+        echo "$AI Nobody ha been added ... you are alone ...."
         sleep 1
     fi
+ Status="$PaginUser"
+    status="2"
+    GraphicaLoop
 
 # Module Package Manager (Nala) Installation:
 
-    echo `graphnala`
+    Status="$PaginUser"
+    status="1"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="1"
+    GraphicaLoop
+
         if [[ $varnala == "no" ]]; then
             echo ""
-            echo "-[~]- Nala is not wanted by user, so let's go the old fashion way! hiiiaa !"
+            echo "$AI Nala is not wanted by user, so let's go the old fashion way! hiiiaa !"
             echo "" && sleep 1
             for NoNala in $p20 $p40 $p60 $p80 $p100
                 do 
@@ -439,13 +411,22 @@
             sudo nala update && sudo nala upgrade -y
             clear
         echo ""    
-        echo "-[~]- Nala is ready to run"
+        echo "$AI Nala is ready to run"
         fi
-    echo `GraphNala` 
+ 
 
 # Module Program Installation:
 
-    echo `graphprog`
+    Status="$PaginUser"
+    status="1"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="1"
+    GraphicaLoop
+    Status="$PaginProg"
+    status="1"
+    GraphicaLoop
+
         if [[ $varhtop == "yes" ]]; then
             sudo nala install htop -y || sudo apt-get install htop -y
         elif [[ $varneofetch == "yes" ]]; then
@@ -457,7 +438,7 @@
             mkdir /share
             mkdir /docker/portainer
             mkdir /docker/portainer/data
-                echo "Creating Docker GUI as Portainer"
+                echo "$AI Creating Docker GUI as Portainer"
                 docker volume create portainer_data
                 docker run -d \
                 -p 8000:8000 -p 9443:9443 \
@@ -467,9 +448,31 @@
                 -v portainer_data:/data \
                 portainer/portainer-ce
         fi
-    echo `GraphProg`
+    Status="$PaginUser"
+    status="2"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="2"
+    GraphicaLoop
+    Status="$PaginProg"
+    status="2"
+    GraphicaLoop
 
 # Module Home automation Installation:
+
+    Status="$PaginUser"
+    status="1"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="1"
+    GraphicaLoop
+    Status="$PaginProg"
+    status="1"
+    GraphicaLoop
+    Status="$PaginHome"
+    status="1"
+    GraphicaLoop
+    
 
         curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - 
         sudo nala update -y || sudo apt update -y
@@ -549,25 +552,48 @@
         sudo systemctl status grafana-server 
             mosquitto_sub -user $varname -P $varpasswd -v -t "#"  
             
+    Status="$PaginUser"
+    status="2"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="2"
+    GraphicaLoop
+    Status="$PaginProg"
+    status="2"
+    GraphicaLoop
+    Status="$PaginHome"
+    status="2"
+    GraphicaLoop
 
 # conclusion of the script
     
-    sleep 5    
-    echo "$Barre"
-    echo -e "                   \e[0;34m----- Dernières Modifications \e[0;34m-----"
-    echo "$Barre"
-    sleep 2 
-        echo "Removing Booty.sh from executable files"
-        echo -n "Booty shake" 
+    Status="$PaginUser"
+    status="1"
+    GraphicaLoop
+    Status="$PaginNala"
+    status="1"
+    GraphicaLoop
+    Status="$PaginProg"
+    status="1"
+    GraphicaLoop
+    Status="$PaginHome"
+    status="1"
+    GraphicaLoop
+    Status="$PaginFini"
+    status="1"
+    GraphicaLoop
+        sleep 2 
+        echo "$AI Removing Booty.sh from executable files"
+        echo -n "$AI Booty shake" 
         sleep 1 
-        echo -e "\\rBooty shake shake" 
+        echo -e "\\r $AI Booty shake shake" 
         sleep 1 
-        echo -e "\\rBooty shaaaake"
+        echo -e "\\r$AI Booty shaaaake"
         gnome-terminal htop &
         neofetch
         sleep 2
-        echo "$varname, the system is ready to be used"
-        echo "Enjoy =) "
+        echo "$AI $varname, the system is ready to be used"
+        echo "$AI Enjoy =) "
         sudo su - $varname
         mv  booty_V2.sh .booty_shaked.sh
 
