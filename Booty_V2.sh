@@ -4,11 +4,11 @@
 
 # Graphical Start Elements:
 
-    AI=" -[~]-  "
-    solo= ' # '
-    Solo=`echo -e "\e[1;33m$solo\e[0m"`
+    AI="-[~]-  "
+    solo=' # '
+    Solo=$(echo -e "\e[1;33m$solo\e[0m")
     barre=' ############################################################################## '
-    Barre=`echo -e "\e[1;33m$barre\e[0m"`
+    Barre=$(echo -e "\e[1;33m$barre\e[0m")
 
     LoadStart='              \e[1;34mInitialisation\e[0m  '
         p0="\e[0;34m----------\e[0m"
@@ -24,15 +24,15 @@
         p100="\e[1;31m**\e[0m\e[0;33m**\e[0m\e[1;33m**\e[0m\e[1;32m**\e[0m\e[0;32m**\e[0m"
     
     fleche='  ----> '
-    Fleche=`echo -e "\e[0;32m$fleche\e[0;m" `
+    Fleche=$(echo -e "\e[0;32m$fleche\e[0;m" )
 
     paginleft=' $Solo\e[0;34m -----------------------       \e[0m '
     paginright='  \e[0;34m      --------------------\e[0m $Solo '
-        PaginUser=`echo -e "$paginleft     User Creation Step    $paginright"`
-        PaginNala=`echo -e "$paginleft   Nala Installation Step  $paginright"`
-        PaginProg=`echo -e "$paginleft Program Installation Step $paginright"`
-        PaginHome=`echo -e "$paginleft     Smart Homing Step     $paginright"`
-        PaginFini=`echo -e "$paginleft    Last Modifications     $paginright"`
+        PaginUser=$(echo -e "$paginleft     User Creation Step    $paginright")
+        PaginNala=$(echo -e "$paginleft   Nala Installation Step  $paginright")
+        PaginProg=$(echo -e "$paginleft Program Installation Step $paginright")
+        PaginHome=$(echo -e "$paginleft     Smart Homing Step     $paginright")
+        PaginFini=$(echo -e "$paginleft    Last Modifications     $paginright")
 
     OkMark="\033[0;32m\xE2\x9C\x94\033[0m"
 
@@ -168,7 +168,9 @@
                         ModHomevarD="External Script"
                     elif [[ $ModHomevar == "3" ]]; then
                         ModHomevarD="Docker Supervised"
-             elif [[ $ModHomevar == "no" ]]; then
+                     fi
+        fi     
+            if [[ $ModHomevar == "no" ]]; then
                 ModHomevar="0" 
                 if [[ $ModHomevar == "0" ]]; then
                         ModHomevarD="Not required"
@@ -178,7 +180,8 @@
                 echo "" && sleep 2.1
                 echo "$AI i need vacations..."
                 echo ""
-            fi 
+                fi
+             fi
     echo "$AI So let grab you some coffee, i will start ma work soon"
     echo "" && sleep 1
 
@@ -188,14 +191,14 @@
                     {
                         Varloop="$Status"
                     
-                        if [[ $Varloop == $PaginUser ]]; then
-                            Fvarloop=`FModUser`
-                        elif [[ $Varloop == $PaginNala ]]; then
-                            FVarloop=`FvarNala`
-                        elif [[ $Varloop == $PaginProg ]]; then
-                            Fvarloop=`FModProg`
-                        elif [[ $Varloop == $PaginHome ]]; then
-                            FVarloop=`FModHome`
+                        if [[ $Varloop == "$PaginUser" ]]; then
+                            Fvarloop=$(FModUser)
+                        elif [[ $Varloop == "$PaginNala" ]]; then
+                            FVarloop=$(FvarNala)
+                        elif [[ $Varloop == "$PaginProg" ]]; then
+                            Fvarloop=$(FModProg)
+                        elif [[ $Varloop == "$PaginHome" ]]; then
+                            FVarloop=$(FModHome)
                         fi
 
                         if [[ $status == "2" ]]; then
@@ -216,6 +219,7 @@
                                     echo "$Barre"
                                     echo ""
                                 done
+                        fi
                     }
 
                 # Addind Conditionnal Fonctions
@@ -289,9 +293,9 @@
                                             sleep 0.3
                                         fi
                                     }
-                                echo `Fvarhtop`
-                                echo `Fvarneofetch`
-                                echo `Fvardocker`
+                                echo $(Fvarhtop)
+                                echo $(Fvarneofetch)
+                                echo $(Fvardocker)
                             }
                         
                         function FModHome ()
@@ -374,6 +378,7 @@
         echo "$AI Nobody ha been added ... you are alone ...."
         sleep 1
     fi
+  fi
  Status="$PaginUser"
     status="2"
     GraphicaLoop
