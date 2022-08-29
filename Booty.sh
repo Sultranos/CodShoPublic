@@ -33,7 +33,7 @@
         PaginNala=$(echo -e "$Solo $paginleft   Nala Installation Step  $paginright $Solo")
         PaginProg=$(echo -e "$Solo $paginleft Program Installation Step $paginright $Solo")
         PaginHome=$(echo -e "$Solo $paginleft     Smart Homing Step     $paginright $Solo")
-      PaginHomVar=$(echo -e "$Solo $Paginleft      $ModHomeVarD $Paginright $Solo")
+      PaginHomVar=$(echo -e "$Solo $Paginleft      $ModHomeVarD         $Paginright $Solo")
         PaginFini=$(echo -e "$Solo $paginleft    Last Modifications     $paginright $Solo")
 
     OkMark=$(echo -e "\e[1;32mV\e[0m")
