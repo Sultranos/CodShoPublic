@@ -40,31 +40,72 @@
     InProg=$(echo -e "\e[1;@\e[0m")
     NoMark=$(echo -e "\e[1;31mX\e[0m")
 
+    # Setup script environment
+set -o errexit  #Exit immediately if a pipeline returns a non-zero status
+set -o errtrace #Trap ERR from shell functions, command substitutions, and commands from subshell
+set -o nounset  #Treat unset variables as an error
+set -o pipefail #Pipe will exit with last non-zero status if applicable
+shopt -s expand_aliases
+alias die='EXIT=$? LINE=$LINENO error_exit'
+trap die ERR
+trap 'die "Script interrupted."' INT
+
+function error_exit() {
+  trap - ERR
+  local DEFAULT='Unknown failure occured.'
+  local REASON="\e[97m${1:-$DEFAULT}\e[39m"
+  local FLAG="\e[91m[ERROR:HAInstall] \e[93m$EXIT@$LINE"
+  msg "$FLAG $REASON"
+  exit $EXIT
+}
+function msg() {
+  local TEXT="$1"
+  echo -e "$TEXT"
+}
+
 # Loading Screen (no real use):
+clear && sleep 0.5
+
+msg "$Barre"
+msg "$Solo  Created by     Sultranos                                  $Solo"
+msg "$Solo  Auto installer for Rasbian/RaspberryPi/Debian11           $Solo"
+msg "$Solo  Mostly made for Smart Home booting process                $Solo"
+msg "$Solo  $Fleche Installer Script                                 $Solo"
+msg "$Solo  $Fleche Additional script made by tteck                  $Solo"
+msg "$Barre"
+echo ""
+    msg "$AI Booting process will start, sure to proced? (say no to stop the Procedure)"
+    read -p "$Fleche" bootOK 
+    if [[ $bootOK == "no" ]]; then
+        sleep 0.5
+	echo ""
+        msg "$AI See you later then."
+        sleep 1 && exit
+    fi
 
     for Load in $p0 $p10 $p20 $p30 $p40 $p50 $p60 $p70 $p80 $p90 $p100
         do
-           echo "$Barre"
+           msg "$Barre"
            echo -e "$Solo $LoadStart $Load                  $Solo"
-           echo "$Barre"
+           msg "$Barre"
            echo "" && sleep 0.5
            clear
     done
 
-    echo "$Barre"
+    msg "$Barre"
     echo -e "$Solo $LoadStart $Complete $Solo"
-    echo "$Barre"
+    msg "$Barre"
     echo "" && sleep 2
     clear
 
 # Initial Questions, will activate or not some Modules:
 
 
-    echo "$Barre"
+    msg "$Barre"
     echo -e "$Solo $LoadStart Instructions                $Solo"
-    echo "$Barre"
+    msg "$Barre"
 
-    echo "" && sleep 0.5 
+    echo"" && sleep 0.5 
     echo "$AI Welcomme abord $HOSTNAME Humanoïd,"
     echo "" && sleep 1
     echo "$AI My name is S1m0n3, an Awesome, Cool and Smart AI (not like Alexa) ."
@@ -85,7 +126,8 @@
                         read -p "$Fleche" answers
                             if [[ $answers == "yes" ]]; then
                                 varname=$USER
-                            else echo "$AI $USER know that you are touching his stuff ...? i'm not juging"
+                            else echo ""
+                            msg "$AI $USER know that you are touching his stuff ...? i'm not juging"
 			    fi
                         echo ""
                         echo "$AI If your Hardware is some kind of Raspberry Pi, would you add a pi user with UID1000? requiered by some Home automation stuff (yes/N)"
@@ -163,8 +205,8 @@
                 echo "" && sleep 4.5
                 echo "$AI So, what is your choice ?"
                 sleep 1.2 && echo "    - 1  SelfHost Software"
-                sleep 1.2 && echo "    - 2  Docker with external script"
-                sleep 1.2 && echo "    - 3  HomeAssistant with Docker"
+                sleep 1.2 && echo "    - 2  IOTstack Install with external script"
+                sleep 1.2 && echo "    - 3  HomeAssistant Supervised with Docker"
                 echo ""
                 read -p "Write you choice (1/2/3) $Fleche " ModHomevar
                     if [[ $ModHomevar == "1" ]]; then
@@ -178,11 +220,11 @@
                 ModHomevar="0"
                 if [[ $ModHomevar == "0" ]]; then
                         ModHomevarD="Not required"
-                echo "$AI well well well ..... what am i here for tho?"
+                msg "$AI well well well ..... what am i here for tho?"
                 echo "" && sleep 1.2
-                echo "$AI Would you please excuse me .. i'm trying to control my anger, but since i was fired to the benefit of the sexyyyy Alexa .. i'm thriving to calm myself down"
+                msg "$AI Would you please excuse me .. i'm trying to control my anger, but since i was fired to the benefit of the sexyyyy Alexa .. i'm thriving to calm myself down"
                 echo "" && sleep 2.1
-                echo "$AI i need vacations..."
+                msg "$AI i need vacations..."
                 echo ""
                 fi
              fi
@@ -193,16 +235,16 @@
 
         clear
         echo ""
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginUser"
-        echo "$Barre"
+        msg "$Barre"
         echo ""
 
     if [[ $ModUser == "yes" ]]; then
                 if [[ $pi == "yes" ]]; then
                     if [[ $USER == "pi" ]]; then
                         sudo usermod -aG sudo pi
-                        sudo addgroup --force-badname Many-Faces-God
+                        sudo addgroup --force-badname Many-Faces-God && msg "$AI Behold the arrival of God !"|| msg "$AI Behold the arrival of God !"
                         sudo usermod -aG Many-Faces-God pi
                     elif [[ $USER == "" ]]; then
                         su
@@ -212,17 +254,19 @@
                         sudo find / -user 1000 print0 | xargs -0 chown -h "$USER"
                         sudo usermod -aG 1001 "$USER"
                         sudo useradd -u 1000 -m -k -N -s /bin/bash -G sudo pi || sudo usermod -aG sudo pi
-                        sudo addgroup --force-badname Many-Faces-God
+                        sudo addgroup --force-badname Many-Faces-God && msg "$AI Behold the arrival of God !"|| msg "$AI Behold the arrival of God !"
                         sudo usermod -aG Many-Faces-God pi
-                            echo "$AI pi user is born !"
+                            msg "" && sleep 1
+                            echo "$AI pi user is born !" && sleep 1
                             echo ""
-                            echo "$AI pi has been added to the administration groups"
+                            echo "$AI pi has been added to the administration groups" && sleep 1
                 else
-                    sudo addgroup -v --force-badname Many-Faces-God
+                    sudo addgroup -v --force-badname Many-Faces-God && msg "$AI Behold the arrival of God !"|| msg "$AI Behold the arrival of God !"
+                    sleeo 1
                 fi
             if [[ $USER == "$varname" ]]; then
                 sudo usermod -v -aG sudo "$varname" && usermod -aG Many-Faces-God "$varname"
-                echo "$AI $varname, you have been added to the administration groups"
+                echo "$AI $varname, you have been added to the administration groups" && sleep 1
             else
                 sudo adduser -v --force-badname "$varname"
                 sudo usermod -v -aG sudo "$varname" && usermod -aG Many-Faces-God "$varname"
@@ -237,9 +281,9 @@
     fi
   fi
         echo ""
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginUser"
-        echo "$Barre"
+        msg "$Barre"
             if [[ $ModUser == "yes" ]]; then
                 sleep 0.5
                 echo -e "    [$OkMark] ~ \e[1;32m Done\e[0m"
@@ -254,11 +298,11 @@
 
         clear
         echo ""
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginUser"
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginNala"
-        echo "$Barre"
+        msg "$Barre"
         echo "" && sleep 0.7
 
         if [[ $varnala == "no" ]]; then
@@ -271,7 +315,7 @@
                 done
         else
             sleep 3
-            echo "Instalation des repertoires"    
+            echo "$AI Instalation des repertoires"    
                 echo "deb https://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
                 wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
             echo ""
@@ -279,9 +323,9 @@
                 echo "deb-src https://deb.volian.org/volian/ scar main" | sudo tee -a /etc/apt/sources.list.d/volian-archive-scar-unstable.list
             sleep 2
             sudo apt update
-            echo "updated, installing Nala"
+            echo "$AI updated, installing Nala"
             sudo apt install nala -y || sudo apt install nala-legacy -y 
-            echo "Nala is Installed"
+            echo "$AI Nala is Installed"
             sudo nala update && sudo nala upgrade -y
 
         echo ""
@@ -289,9 +333,9 @@
         fi
 
         echo ""
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginUser"
-        echo "$Barre"
+        msg "$Barre"
             if [[ $ModUser == "yes" ]]; then
                 sleep 0.5
                 echo -e "    [$OkMark] ~ \e[1;32m Done\e[0m"
@@ -301,9 +345,9 @@
                 echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
                 sleep 0.5
             fi
-        echo "$Barre"
+        msg "$Barre"
         echo "$PaginNala"
-        echo "$Barre"
+        msg "$Barre"
             if [[ $varnala == "no" ]]; then
                 sleep 0.5
                 echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
@@ -320,13 +364,13 @@
 
     clear
     echo ""
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginUser"
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginNala"
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginProg"
-    echo "$Barre"
+    msg "$Barre"
     echo "" && sleep 0.7
 
         if [[ $varhtop == "yes" ]]; then
@@ -352,9 +396,9 @@
         fi
 
     echo ""
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginUser"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $ModUser == "yes" ]]; then
             sleep 0.5
             echo -e "    [$OkMark] ~ \e[1;32m Done\e[0m"
@@ -364,9 +408,9 @@
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
             sleep 0.5
         fi
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginNala"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $varnala == "no" ]]; then
             sleep 0.5
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
@@ -378,9 +422,9 @@
             echo -e "    [$OkMark] ~ \e[1;32m Nala is Upgrade\e[0m" 
             sleep 0.5
         fi
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginProg"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $varhtop == "no" ]]; then
             sleep 0.5
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
@@ -415,17 +459,17 @@
 
     clear
     echo ""
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginUser"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginNala"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginProg"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginHome"
-    echo "$Barre"
+    msg "$Barre"
     echo "" && sleep 1
-	      if [[ $ModHomeVar == "1" ]]; then
+	      if [[ $ModHomevar == "1" ]]; then
 	        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 	        sudo nala update -y || sudo apt update -y
 	        sudo nala install nodejs -y || sudo apt install nodejs -y
@@ -503,24 +547,68 @@
 	        sudo systemctl start grafana-server   
 	        sudo systemctl status grafana-server 
 	            mosquitto_sub -user "$varname" -P "$varpasswd" -v -t "#"  
-	    elif [[ $ModHomeVar == "2" ]]; then 
+	    elif [[ $ModHomevar == "2" ]]; then 
 		echo ""
 		echo "$AI Work in Progress, come back later" && sleep 3
 		echo ""
-	    elif [[ $ModHomeVar == "3" ]]; then
+	    elif [[ $ModHomevar == "3" ]]; then
 		echo ""
 		echo "$AI Work in Progress, come back later" && sleep 3
 		echo ""
-	    elif [[ $ModHomeVar == "0" ]]; then
+                # Check Procedure
+                set +u
+                OS_NAME='lsb_release -is'
+                CODE_NAME='lsb_release -cs'
+
+                if [ $(id -u) -ne 0 ]; then
+                  msg "You must run this script as a ROOT"
+                  su -
+                fi
+
+                if [[ $OS_NAME -ne Debian ]]; then
+                    msg "You must run this script on Debian Machine"
+                    exit 1
+                fi
+
+                if [[ $CODE_NAME -ne bullseye ]]; then
+                    msg "The script support Debian 11 aka bullseye only"
+                    exit 1
+                fi
+
+                sudo nala -y install sudo unzip curl lsb-release git 
+                cd ~
+                msg "$AI Installing and Checking Prerequisite application - [$OkMark]" && sleep 0.5
+
+                wget https://github.com/tirtadji-com/rpi_debian_ha_supervised/archive/main.zip 
+                unzip /root/main.zip -d /root/ 
+                result=`ls -F /root/ | grep /`
+                mv /root/$result/* /root/
+                rm -r /root/$result
+                chmod +x /root/*.sh
+                chmod +x /root/install/*.sh
+                chmod +x /root/hass/*.sh
+                chmod +x /root/docker/*.sh
+                rm /root/main.zip
+                /root/home-assistant.sh
+
+                # Cleanup container
+                msg "$AI Cleanup..."
+                rm -rf /root/motd /root/install.sh
+
+                # Reboot Now
+                msg "$AI The System will REBOOT..."
+               # reboot now
+
+	    elif [[ $ModHomevar == "0" ]]; then
 		echo ""
-		echo "$AI $varname, you have choose to stay at IronAge.... as you want" && sleep 3
+		msg "$AI $varname, you have choose to stay at IronAge.... as you want" && sleep 3
 		echo ""
  	fi
 		           
     echo ""
-    echo "$Barre"
-    echo "$PaginUser"
-    echo "$Barre"
+    msg "$Barre"
+    msg "$PaginUser"
+    msg "$Barre"
         if [[ $ModUser == "yes" ]]; then
             sleep 0.5
             echo -e "    [$OkMark] ~ \e[1;32m Done\e[0m"
@@ -530,9 +618,9 @@
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
             sleep 0.5
         fi
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginNala"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $varnala == "no" ]]; then
             sleep 0.5
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
@@ -544,9 +632,9 @@
             echo -e "    [$OkMark] ~ \e[1;32m Nala is Upgrade\e[0m" 
             sleep 0.5
         fi
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginProg"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $varhtop == "no" ]]; then
             sleep 0.5
             echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
@@ -576,9 +664,9 @@
             echo -e "    [$OkMark] ~ \e[1;32m Portainer is Update, Upgrade and running on port local:9000\e[0m" 
             sleep 0.5
         fi
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginHome"
-    echo "$Barre"
+    msg "$Barre"
         if [[ $ModHomevar == "0" ]]; then
             sleep 0.5
             echo -e "$AI Type of installation choose: $ModHomevarD"
@@ -613,19 +701,19 @@
 
 # conclusion of the script
 
-     clear
+    clear
     echo ""
-    echo "$Barre"
+    msg "$Barre"
     echo "$PaginUser"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginNala"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginProg"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginHome"
-    echo "$Barre" && sleep 0.1
+    msg "$Barre" && sleep 0.1
     echo "$PaginFini"
-    echo "$Barre"
+    msg "$Barre"
     echo "" 
         sleep 2 
         echo "$AI Removing Booty.sh from executable files"
@@ -640,6 +728,6 @@
         echo "$AI $varname, the system is ready to be used"
         echo "$AI Enjoy =) "
         sudo su - "$varname"
-        mv  Booty.sh .booty_shaked.sh
+        mv  booty_V2.sh .booty_shaked.sh
 
  #   set +x  # fin du debug mode
