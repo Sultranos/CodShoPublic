@@ -650,18 +650,18 @@ echo ""
             sleep 0.5
         elif [[ $varneofetch == "yes" ]]; then
             sleep 0.5
-            echo -e "    [$OkMark] ~ \e[1;32m Neofetch is Update and Upgrade\e[0m"
+            msg "    [$OkMark] ~ \e[1;32m Neofetch is Update and Upgrade\e[0m"
             sleep 0.5
         fi
         if [[ $vardocker == "no" ]]; then
             sleep 0.5
-            echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
+            msg "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
             sleep 0.5
         elif [[ $vardocker == "yes" ]]; then
             sleep 0.5
-            echo -e "    [$OkMark] ~ \e[1;32m Docker is Update, Upgrade and is already running\e[0m"
+            msg "    [$OkMark] ~ \e[1;32m Docker is Update, Upgrade and is already running\e[0m"
             sleep 0.2
-            echo -e "    [$OkMark] ~ \e[1;32m Portainer is Update, Upgrade and running on port local:9000\e[0m" 
+            msg "    [$OkMark] ~ \e[1;32m Portainer is Update, Upgrade and running on port local:9000\e[0m" 
             sleep 0.5
         fi
     msg "$Barre"
@@ -669,33 +669,33 @@ echo ""
     msg "$Barre"
         if [[ $ModHomevar == "0" ]]; then
             sleep 0.5
-            echo -e "$AI Type of installation choose: $ModHomevarD"
+            msg "$AI Type of installation choose: $ModHomevarD"
             sleep 0.5
-            echo -e "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
+            msg "    [$NoMark] ~ \e[1;31m Denied by User\e[0m"
             sleep 0.7
         elif [[ $ModHomevar == "1" ]]; then
             sleep 0.5
-            echo -e "$AI Type of installation choose: $ModHomevarD"
+            msg "$AI Type of installation choose: $ModHomevarD"
             sleep 0.5
-            echo -e "    [$OkMark] ~ \e[1;32m Influx DB is Update, Upgrade and is already running\e[0m"
+            msg "    [$OkMark] ~ \e[1;32m Influx DB is Update, Upgrade and is already running\e[0m"
             sleep 0.2
-            echo -e "    [$OkMark] ~ \e[1;32m Grafana is Update, Upgrade and running on port local:\e[0m" 
+            msg "    [$OkMark] ~ \e[1;32m Grafana is Update, Upgrade and running on port local:\e[0m" 
             sleep 0.2
-            echo -e "    [$OkMark] ~ \e[1;32m NodeRed is Update, Upgrade and running on port local:\e[0m" 
+            msg "    [$OkMark] ~ \e[1;32m NodeRed is Update, Upgrade and running on port local:\e[0m" 
             sleep 0.2
-            echo -e "    [$OkMark] ~ \e[1;32m Mosquitto is Update, Upgrade and running on port local:\e[0m" 
+            msg "    [$OkMark] ~ \e[1;32m Mosquitto is Update, Upgrade and running on port local:\e[0m" 
             sleep 0.7
         elif [[ $ModHomevar == "2" ]]; then
             sleep 0.5
-            echo -e "$AI Type of installation choose: $ModHomevarD"
+            msg "$AI Type of installation choose: $ModHomevarD"
             sleep 0.5
-            echo -e "    [$InProg] ~ \e[1;36m Section Not finish yet ..... be patient\e[0m"
+            msg "    [$InProg] ~ \e[1;36m Section Not finish yet ..... be patient\e[0m"
             sleep 0.7
         elif [[ $ModHomevar == "3" ]]; then
             sleep 0.5
-            echo -e "$AI Type of installation choose: $ModHomevarD"
+            msg "$AI Type of installation choose: $ModHomevarD"
             sleep 0.5
-            echo -e "    [$InProg] ~  \e[1;36m Section Not finish yet ..... be patient\e[0m"
+            msg "    [$InProg] ~  \e[1;36m Section Not finish yet ..... be patient\e[0m"
             sleep 0.7        
         fi
 
@@ -728,6 +728,6 @@ echo ""
         echo "$AI $varname, the system is ready to be used"
         echo "$AI Enjoy =) "
         sudo su - "$varname"
-        mv  booty_V2.sh .booty_shaked.sh
+        mv  Booty.sh .booty_shaked.sh
 
  #   set +x  # fin du debug mode
